@@ -10,7 +10,7 @@ exports.handler = async (event, context, callback) => {
 	let db = client.db(config.db);				
 	try{
 		var coll = db.collection('abs');
-		let result = await coll.count({"metadata.organization": filter.metadata.organization, "metadata.product": filter.metadata.product});
+		let result = await coll.countDocuments({"metadata.organization": filter.metadata.organization, "metadata.product": filter.metadata.product});
 		return result;		
 	}	
 	finally{
