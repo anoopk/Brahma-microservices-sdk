@@ -26,17 +26,19 @@ exports.getDocumentCount = async (event, context, callback) => {
 	context.callbackWaitsForEmptyEventLoop = false;
 	let client = await MongoClient.connect(config.url, { useNewUrlParser: true });	
 	let db = client.db(config.db);		
+	var ss = [];
+	var i = 0;
 	var sentimentStats = {"positive": 0, "negative": 0, "reviews": 0};
 	try{
 		var coll = db.collection('sentiment');
 		let results = await coll.find({"metadata.organization": filter.metadata.organization}).forEach(function(doc){
-			console.log(doc.result);
+			ss[i++] = doc.result.result;			
 		});
 		client.close();
-		//sentimentStats.reviews++;
-		//let r = result.result;
-		//console.log(r);
-		//});		
+		sentimentStats.reviews = ss.length;
+		var i =0;
+		console.log(ss[i].polarity)
+		ss.map(record => console.log(record));
 		return sentimentStats;		
 	}	
 	finally{
