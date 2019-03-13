@@ -7,13 +7,13 @@ var event1 = {"metadata": {"organization": "Hyundai", "product": "i10"}};
 var event2 = {"metadata": {"organization": "maruti", "product": "wagonr"}};
 
 autoworld.reviewCount(event1, config).then(function(count, error){
-	console.log("Gotcha", count);		
+	console.log("Total reviews ", count);		
 });
 
 autoworld.organisationCount(event1, config).then(function(count, error){
-	console.log("Gotcha", count);		
+	console.log("Organizations ", count);		
 });
 
 autoworld.productCount(event1, config).then(function(count, error){
-	console.log("Gotcha", count);		
+	console.log("Product count ", count);		
 });
