@@ -1,10 +1,19 @@
-const sdk = require('./index')
+const autoworld = require('./lib/autoworld')
 const fs = require('fs');
+var config = require('./config.json').mongodb
 
 var event0 = {"metadata": {"organization": "Hyundai", "product": "i20"}};
 var event1 = {"metadata": {"organization": "Hyundai", "product": "i10"}};
 var event2 = {"metadata": {"organization": "maruti", "product": "wagonr"}};
-sdk.getDocumentCount(event1, {}).then(function(status, error){
-	console.log("Gotcha");		
+
+autoworld.reviewCount(event1, config).then(function(count, error){
+	console.log("Gotcha", count);		
 });
 
+autoworld.organisationCount(event1, config).then(function(count, error){
+	console.log("Gotcha", count);		
+});
+
+autoworld.productCount(event1, config).then(function(count, error){
+	console.log("Gotcha", count);		
+});

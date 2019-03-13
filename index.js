@@ -3,9 +3,9 @@
 var config = require('./config.json').mongodb
 var MongoClient = require('mongodb').MongoClient
 
-//system.organizationCount
-//system.organizations
-//system.aspects
+//autoworld.organizationCount
+//autoworld.organizations
+//autoworld.aspects
 
 //wiki.organizations
 //wiki.products
@@ -17,10 +17,7 @@ var MongoClient = require('mongodb').MongoClient
 
 //product.sentimentSnapshot() = async (org) => total reviews/positive/neutral/negative
 //product.aspectSnapshot => total reviews/positive/negative per aspect
-
-
-//aspect.getSentimentData(product, aspect)
-
+exports.organizationCount = 
 exports.getDocumentCount = async (event, context, callback) => {
 	var filter = event;
 	context.callbackWaitsForEmptyEventLoop = false;
