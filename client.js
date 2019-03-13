@@ -14,7 +14,7 @@ autoworld.organisations(event1, config).then(function(count, error){
 	console.log("Organizations ", count);		
 });
 
-autoworld.organisationCount(event1, config).then(function(count, error){
+autoworld.organisations.count(event1, config).then(function(count, error){
 	console.log("Organization count ", count);		
 });
 
@@ -22,7 +22,7 @@ autoworld.products(event1, config).then(function(count, error){
 	console.log("Products ", count);		
 });
 
-autoworld.productCount(event1, config).then(function(count, error){
+autoworld.products.count(event1, config).then(function(count, error){
 	console.log("Product count ", count);		
 });
 
