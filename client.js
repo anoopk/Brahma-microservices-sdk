@@ -10,15 +10,13 @@ autoworld.startup(config).then(function(aw){
 	aw.reviewCount({}).then(function(count, error){
 		console.log("Total reviews ", count);		
 	});
-	
 	aw.organisations(event1, config).then(function(count, error){
 		console.log("Organizations ", count);		                      
 	});
-
-	aw.organisations.positives(5).then(function(ss, error){
-		console.log("Organizations positives", ss);
+	aw.organisations.sentiments().then(function(ss, error){
+		console.log("Organizations sentiments", ss);
+		aw.shutdown();		
 	});
-	aw.shutdown();
 	return;
 	
 	aw.organisations.count(event1, config).then(function(count, error){
