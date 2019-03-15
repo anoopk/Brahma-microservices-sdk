@@ -17,7 +17,7 @@ autoworld.startup(config).then(function(aw){
 		console.log("Organizations  ", count);		
 	});
 
-	const org = "Hyundai";	
+	const org = "Maruti";	
 	aw.products(org).then(function(count, error){
 		console.log("Products ", count);		
 	});
@@ -26,14 +26,17 @@ autoworld.startup(config).then(function(aw){
 	//	//console.log("Products ", count);		
 	//});
 	
-	aw.organisations(event1, config).then(function(count, error){
-		console.log("Organizations ", count);		                      
+	aw.organisations(event1, config).then(async function(orgs, error){
+		console.log("Organizations ", orgs);
+		orgs.map(org => aw.organisations.sentiments(org).then(function(sentiments){
+			console.log(sentiments);
+			aw.shutdown();
+		}));		
 	});
 	
-	aw.organisations.sentiments(org).then(function(ss, error){
-		console.log("Sentiment snapshot for ", org, ss);
-		aw.shutdown();		
-	});
-	
-	return;	
+	//aw.organisations.sentiments(org).then(function(ss, error){
+	//	console.log("Sentiment snapshot for ", org, ss);
+	//	aw.shutdown();		
+	//
 });
+
