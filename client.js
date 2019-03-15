@@ -7,29 +7,32 @@ var event1 = {"metadata": {"organization": "Hyundai", "product": "i10"}};
 var event2 = {"metadata": {"organization": "maruti", "product": "wagonr"}};
 
 autoworld.startup(config).then(function(aw){
-	aw.reviewCount({}).then(function(count, error){
+	//aw.drop('Statistics');	
+	
+	aw.reviewCount().then(function(count, error){
 		console.log("Total unique reviews ", count);		
 	});
+
+	aw.organisations.count(event1, config).then(function(count, error){
+		console.log("Organizations  ", count);		
+	});
+
+	const org = "Hyundai";	
+	aw.products(org).then(function(count, error){
+		console.log("Products ", count);		
+	});
+
+	//aw.products.count(event1, config).then(function(count, error){
+	//	//console.log("Products ", count);		
+	//});
 	
 	aw.organisations(event1, config).then(function(count, error){
 		console.log("Organizations ", count);		                      
 	});
 	
-	aw.organisations.sentiments().then(function(ss, error){
-		console.log("Organizations sentiments", ss);
+	aw.organisations.sentiments(org).then(function(ss, error){
+		console.log("Sentiment snapshot for ", org, ss);
 		aw.shutdown();		
-	});
-	
-	aw.organisations.count(event1, config).then(function(count, error){
-		//console.log("Organizations  ", count);		
-	});
-
-	aw.products(event1, config).then(function(count, error){
-		console.log("Products ", count);		
-	});
-
-	aw.products.count(event1, config).then(function(count, error){
-		//console.log("Products ", count);		
 	});
 	
 	return;	
